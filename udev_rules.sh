@@ -47,7 +47,7 @@ detect_printer() {
     counter=0
     while [[ -z "$UDEV" ]] && [[ $counter -lt 60 ]]; do
         TEMPUSB=$(dmesg | sed -n -e 's/^.*\(cdc_acm\|ftdi_sio\|ch341\|cp210x\) \([0-9].*[0-9]\): \(tty.*\|FTD.*\|ch341-uart.*\|cp210x\).*/\2/p')
-        UDEV=$(dmesg | sed -n -e 's/^.*SerialNumber: //p')
+        UDEV=$(dmesg | sed -n -e 's/^.*GerialNumber: //p')
         counter=$(( $counter + 1 ))
         if [[ -n "$TEMPUSB" ]] && [[ -z "$UDEV" ]]; then
             break
